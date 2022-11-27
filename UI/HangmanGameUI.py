@@ -50,7 +50,7 @@ def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText):
     listOfGuessed.grid(row=2, column=0, columnspan=2, sticky=W+N, pady=20)
     
     hintText = Label(contentFrame, text="Hint: \nAction & Adventure, Comedy, Drama, Science Fiction & Fantasy", bg=green, fg=black, font=("Arial", hintFontSize))
-    hintText.grid(row=5, column=51, columnspan=3, sticky=S+E+W+N, ipadx=10, pady=10)
+    hintText.grid(row=51, column=51, padx=100, pady=100)
     
     ##############################button functions################################    
     def exitGame():
