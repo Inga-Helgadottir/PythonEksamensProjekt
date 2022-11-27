@@ -50,6 +50,7 @@ def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText):
     listOfGuessed.grid(row=2, column=0, columnspan=2, sticky=W+N, pady=20)
     
     hintText = Label(contentFrame, text="Hint: \nAction & Adventure, Comedy, Drama, Science Fiction & Fantasy", bg=green, fg=black, font=("Arial", hintFontSize))
+    # placed it out of vision until you press the hint button
     hintText.grid(row=51, column=51, padx=100, pady=100)
     
     ##############################button functions################################    
@@ -59,6 +60,7 @@ def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText):
 
     def hintChecker():
         global hintNbr
+        # move the hint text so you can see it on the screen
         hintText.grid(row=5, column=0, columnspan=3, sticky=S+E+W+N, ipadx=10, pady=10)
 
         if hintNbr == 0:
@@ -72,6 +74,7 @@ def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText):
         elif hintNbr == 2:
             print("get third hint")
             hintNbr = 3
+            # moves the hint button out of the line of vision
             hintButton.grid(row=50, column=50)
             return
 
