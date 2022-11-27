@@ -19,16 +19,17 @@ def makeRickAnMortyData():
     results = response.json()["results"]
 
     # save original code to its own csv file
-    with open(originalRickAndMortyData, "w") as f:
+    with open(originalRickAndMortyData, "w", newline='') as f:
         # enters the code into a DataFrame
         resultsDF = pd.DataFrame.from_dict(results)
         # turns the json data to csv
-        resultsDF_CSV = resultsDF.to_csv(index=False)
+        resultsDF_CSV = resultsDF.to_csv(index=True)
         # write the content to the file
         f.write(resultsDF_CSV)
 
     # read the csv file into a DataFrame and only keep the columns name, gender, species, origin
-    df = pd.read_csv(originalRickAndMortyData, usecols = ["name", "gender", "species", "origin"])
+    df = pd.read_csv(originalRickAndMortyData, usecols = ["name", "gender", "species", "origin"], 
+              skipinitialspace=True)
 
     # the origin column gives a weird result
     def reformatOrigin(origin):
@@ -46,10 +47,10 @@ def makeRickAnMortyData():
     df_new['sentenceInfo'] = df_new['guessWord'].apply(makeSentenceInfo)
 
     # save the changed data to its own csv file
-    with open(myRickAndMortyData, "w") as f:
+    with open(myRickAndMortyData, "w", newline='') as f:
         # enters the code into a DataFrame
         resultsDF = pd.DataFrame.from_dict(df_new)
-        # turns the json data to csv
-        resultsDF_CSV = resultsDF.to_csv(index=False)
+        # turns the json data to csv and gives each row an id
+        resultsDF_CSV = resultsDF.to_csv(index=True)
         # write the content to the file
         f.write(resultsDF_CSV)
