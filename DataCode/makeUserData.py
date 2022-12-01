@@ -39,6 +39,8 @@ def signUp(userName, password):
             writeThisInUserData = "category,guessWord,wonOrLost,correctGuesses,wrongGuesses,nbrOfGuesses,hintsUsed,gameCompleted\n"
             with open(userCsvFile, "w", newline='') as file:
                 file.write(writeThisInUserData)
+            
+            return "You are now logged in"
 
 def logIn(userName, pasW):
     # print(pasW)
