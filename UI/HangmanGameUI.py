@@ -1,13 +1,13 @@
 from tkinter import *
 from PIL import ImageTk, Image
-from getLines import showLines
 import tkinter.font as font
 from tkinter import ttk
+from getLines import showLines
 
-def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText):
+def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText, hintTexts):
     root = Tk()
     root.title("Hangman")
-    root.iconbitmap("../HangmanIcon.ico")
+    root.iconbitmap("HangmanIcon.ico")
     root.geometry("1200x765")
     root.configure(bg='black')
 
@@ -33,7 +33,7 @@ def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText):
     headerFrame = LabelFrame(root, bg=purpleHeaderBg)
     headerFrame.pack()
 
-    contentFrame = LabelFrame(root, bg=black, labelanchor=W+N, width=root.winfo_screenwidth(), borderwidth=0, highlightthickness=0)
+    contentFrame = LabelFrame(root, bg=black, labelanchor=W+N, width=root.winfo_width(), borderwidth=0, highlightthickness=0)
     contentFrame.pack()
 
     headline = Label(headerFrame, text="Hangman", fg=white, bg=purpleHeaderBg, font=("Arial", 45), width=root.winfo_width())
@@ -51,7 +51,7 @@ def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText):
     
     hintText = Label(contentFrame, text="Hint: \nAction & Adventure, Comedy, Drama, Science Fiction & Fantasy", bg=green, fg=black, font=("Arial", hintFontSize))
     # placed it out of vision until you press the hint button
-    hintText.grid(row=51, column=51, padx=100, pady=100)
+    hintText.grid(row=51, column=51)
     
     ##############################button functions################################    
     def exitGame():
@@ -104,5 +104,3 @@ def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText):
     image.grid(row=2, column=2, sticky=W+N, pady=20)
 
     root.mainloop()
-    
-hangmanGamePage("Rick and Morty character", "_ _ _ _   _ _ _ _", "A, B")
