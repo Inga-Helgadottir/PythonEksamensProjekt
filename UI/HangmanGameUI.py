@@ -4,11 +4,14 @@ import tkinter.font as font
 from tkinter import ttk
 from getLines import showLines
 
+import os
+from os import listdir
+
 def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText, hintTexts):
     root = Tk()
     root.title("Hangman")
     root.iconbitmap("HangmanIcon.ico")
-    root.geometry("1200x765")
+    root.geometry("1200x800")
     root.configure(bg='black')
 
     ##############################colors################################
@@ -24,7 +27,25 @@ def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText, hint
     ##############################variables################################
     global hintNbr
     hintNbr = 0
+
+    global currentHintText
+    currentHintText = ""
+
+    global hangmanImages
+    hangmanImages = []
     
+    folder_dir = "../HangmanFunctions/Images"
+    for images in os.listdir(folder_dir):
+        if (images.endswith(".jpg")):
+            hangmanImages.append(images)
+
+    # making sure that step10 is last
+    myorder = [0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 2]
+    hangmanImages = [hangmanImages[i] for i in myorder]    
+
+    global currentHangmanImg
+    currentHangmanImg = "../HangmanFunctions/Images/" + hangmanImages[0]
+
     myWidth2 = 15
     myFontSize = 30
     hintFontSize = 15
@@ -49,9 +70,7 @@ def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText, hint
     listOfGuessed = Label(contentFrame, text=listOfGuessedText, bg=black, fg=white, font=("Arial", myFontSize))
     listOfGuessed.grid(row=2, column=0, columnspan=2, sticky=W+N, pady=20)
     
-    hintText = Label(contentFrame, text="Hint: \nAction & Adventure, Comedy, Drama, Science Fiction & Fantasy", bg=green, fg=black, font=("Arial", hintFontSize))
-    # placed it out of vision until you press the hint button
-    hintText.grid(row=51, column=51)
+    hintText = Label(contentFrame, text=currentHintText, bg=green, fg=black, font=("Arial", hintFontSize))
     
     ##############################button functions################################    
     def exitGame():
@@ -60,19 +79,35 @@ def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText, hint
 
     def hintChecker():
         global hintNbr
-        # move the hint text so you can see it on the screen
-        hintText.grid(row=5, column=0, columnspan=3, sticky=S+E+W+N, ipadx=10, pady=10)
-
+        
         if hintNbr == 0:
-            print("get first hint")
+            if categoryInfoText == "Movies":
+                currentHintText = "This movies genre is " + hintTexts[0]
+            else: 
+                currentHintText = "This persons species is " + hintTexts[0]
+            # move the hint text so you can see it on the screen
+            hintText = Label(contentFrame, text=currentHintText, bg=green, fg=black, font=("Arial", hintFontSize))
+            hintText.grid(row=5, column=0, columnspan=3, sticky=S+E+W+N, ipadx=10, pady=8)
             hintNbr = 1
             return
         elif hintNbr == 1:
-            print("get second hint")
+            if categoryInfoText == "Movies":
+                currentHintText = "This movies director is " + hintTexts[1]
+            else: 
+                currentHintText = "This persons gender is " + hintTexts[1]
+            # add the hint text so you can see it on the screen
+            hintText = Label(contentFrame, text=currentHintText, bg=green, fg=black, font=("Arial", hintFontSize))
+            hintText.grid(row=6, column=0, columnspan=3, sticky=S+E+W+N, ipadx=10, pady=8)
             hintNbr = 2
             return
         elif hintNbr == 2:
-            print("get third hint")
+            if categoryInfoText == "Movies":
+                currentHintText = "This movies studio is " + hintTexts[2]
+            else: 
+                currentHintText = "This persons origin is " + hintTexts[2]
+            # add the hint text so you can see it on the screen
+            hintText = Label(contentFrame, text=currentHintText, bg=green, fg=black, font=("Arial", hintFontSize))
+            hintText.grid(row=7, column=0, columnspan=3, sticky=S+E+W+N, ipadx=10, pady=8)
             hintNbr = 3
             # moves the hint button out of the line of vision
             hintButton.grid(row=50, column=50)
@@ -99,7 +134,7 @@ def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText, hint
     guessWordInput.grid(row=4, column=1, ipady=6, pady=11)
     
     ##############################image################################    
-    hangmanImg = ImageTk.PhotoImage(Image.open("../HangmanFunctions/Images/start.jpg"))
+    hangmanImg = ImageTk.PhotoImage(Image.open(currentHangmanImg))
     image = Label(contentFrame, image=hangmanImg)
     image.grid(row=2, column=2, sticky=W+N, pady=20)
 
