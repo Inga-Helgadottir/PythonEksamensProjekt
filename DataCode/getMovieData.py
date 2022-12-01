@@ -18,7 +18,7 @@ def makeMovieData():
     # adding a new column with sentence info (this becomes = 4_7)
     df_new['sentenceInfo'] = df_new['guessWord'].apply(makeSentenceInfo)
 
-    # save original code to its own csv file
+    # save my movie code to its own csv file
     with open(myMovieData, "w", newline='') as f:
         # enters the code into a DataFrame
         resultsDF = pd.DataFrame.from_dict(df_new)
