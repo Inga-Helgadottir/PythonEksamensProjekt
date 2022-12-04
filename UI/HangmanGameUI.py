@@ -3,11 +3,12 @@ from PIL import ImageTk, Image
 import tkinter.font as font
 from tkinter import ttk
 from getLines import showLines
+from tkinter import messagebox
 
 import os
 from os import listdir
 
-def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText, hintTexts):
+def hangmanGamePage(userName, guessWord, categoryInfoText, spaceForLinesText, listOfGuessedText, hintTexts):
     root = Tk()
     root.title("Hangman")
     root.iconbitmap("HangmanIcon.ico")
@@ -45,6 +46,12 @@ def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText, hint
 
     global currentHangmanImg
     currentHangmanImg = "../HangmanFunctions/Images/" + hangmanImages[0]
+
+    global correctGuesses
+    correctGuesses = []
+
+    global wrongGuesses
+    wrongGuesses = []
 
     myWidth2 = 15
     myFontSize = 30
@@ -113,25 +120,44 @@ def hangmanGamePage(categoryInfoText, spaceForLinesText, listOfGuessedText, hint
             hintButton.grid(row=50, column=50)
             return
 
+    def handleGuess(guess):
+        guessCheck = guessWord.upper()
+        currentGuessUpper = guess.upper()
+        if len(guess) == 0:
+            messagebox.showerror("Input error", "The input is empty")
+        elif len(guess) == 1:
+            return "CHECK AGAINST GUESS WORD"
+        else:
+            if guessCheck == currentGuessUpper:
+                print("yes")
+                # you won the game
+                    # save info to personal user data
+            else:
+                print("no")
+                # wrongGuesses.append(guess)
+        # lists of guesses:
+            # correctGuesses.append(guess)
+            # wrongGuesses.append(guess)
+
+        # def gameOver(wonOrLost):
+        #     if wonOrLost == "Won":
+        #         S
+        #     else:
+
+
     ##############################buttons################################
     exitButton = Button(contentFrame, text="Exit", command=exitGame, width=8, fg=white, bg=red, font=("Arial", myFontSize))
-    exitButton.grid(row=4, column=0, sticky=S+W, ipadx=15, pady=5, padx=25)
-    
-    guessWordButton = Button(contentFrame, text="Guess a word", command=lambda: guessWord(), fg=white, bg=blue, width=myWidth2, font=("Arial", myFontSize))
-    guessWordButton.grid(row=4, column=2, sticky=S+E, ipadx=15, pady=5, padx=25)
+    exitButton.grid(row=3, column=0, sticky=S+W, ipadx=15, pady=5, padx=25)
 
     hintButton = Button(contentFrame, text="Hint", command=hintChecker, fg=black, bg=green, font=("Arial", myFontSize))
     hintButton.grid(row=0, column=2, sticky=E+N, pady=5)
 
-    guessSentenceButton = Button(contentFrame, text="Guess a sentence", command=lambda: guessSentence(), fg=white, bg=blue, width=myWidth2, font=("Arial", myFontSize))
+    guessSentenceButton = Button(contentFrame, text="Guess", command=lambda: handleGuess(guessSentenceInput.get()), fg=white, bg=blue, width=myWidth2, font=("Arial", myFontSize))
     guessSentenceButton.grid(row=3, column=2, sticky=S+E, ipadx=15, pady=5, padx=25)
 
     ##############################inputs################################    
     guessSentenceInput = Entry(contentFrame, bg=purpleLogInAndSignInBg, fg=white, borderwidth=2, font=("Arial", myFontSize))
     guessSentenceInput.grid(row=3, column=1, ipady=6, pady=11)
-
-    guessWordInput = Entry(contentFrame, bg=purpleLogInAndSignInBg, fg=white, borderwidth=2, font=("Arial", myFontSize))
-    guessWordInput.grid(row=4, column=1, ipady=6, pady=11)
     
     ##############################image################################    
     hangmanImg = ImageTk.PhotoImage(Image.open(currentHangmanImg))

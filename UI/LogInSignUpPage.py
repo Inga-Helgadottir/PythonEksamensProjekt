@@ -1,8 +1,4 @@
 from tkinter import *
-from PIL import ImageTk, Image
-import tkinter.font as font
-from tkinter import ttk
-from getLines import showLines
 from DataCode import handlingUserData
 from tkinter import messagebox 
 from DataCode.handlingUserData import checkIfIShouldShowStatistics
@@ -95,6 +91,9 @@ def loginSignUpPage():
             if checkSignUp == "You are now logged in":
                 root.destroy()
                 chooseACategoryPage(userName)
+            else:
+                messagebox.showerror("Input error", "The user name you have entered is already taken")
+
                 
 
     ##############################buttons################################
