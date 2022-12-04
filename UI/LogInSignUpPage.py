@@ -3,8 +3,13 @@ from PIL import ImageTk, Image
 import tkinter.font as font
 from tkinter import ttk
 from getLines import showLines
+from DataCode import handlingUserData
+from tkinter import messagebox 
+from DataCode.handlingUserData import checkIfIShouldShowStatistics
+from ChooseCategoryPage import chooseACategoryPage
+from StartGameOrStatistics import startOrStatistics
 
-def loginSignUpPage():#categoryInfoText, spaceForLinesText, listOfGuessedText, hintTexts):
+def loginSignUpPage():
     root = Tk()
     root.title("Hangman")
     root.iconbitmap("HangmanIcon.ico")
@@ -67,34 +72,57 @@ def loginSignUpPage():#categoryInfoText, spaceForLinesText, listOfGuessedText, h
     ##############################button functions################################    
     def exitGame():
         # add a function to save progress later
-        root.quit()      
+        root.quit()    
+
+    def logInFunc(userName, password):
+        showStatistics = checkIfIShouldShowStatistics(userName)
+        checkLogin = handlingUserData.logIn(userName, password)
+        if checkLogin:
+            if showStatistics < 4:
+                root.destroy()
+                startOrStatistics(userName)
+            else:
+                root.destroy()
+                chooseACategoryPage(userName)
+        else:
+            messagebox.showerror("Input error", "The user name or password is wrong")
+
+    def signUpFunc(userName, password):
+        if len(userName) == 0 or len(password) == 0:
+            messagebox.showerror("Input error", "Please enter a user name and password")
+        else:
+            checkSignUp = handlingUserData.signUp(userName, password)
+            if checkSignUp == "You are now logged in":
+                root.destroy()
+                chooseACategoryPage(userName)
+                
 
     ##############################buttons################################
     exitButton = Button(contentFrame, text="Exit", command=exitGame, width=8, fg=white, bg=red, font=("Arial", myFontSize))
     exitButton.grid(row=4, column=0, sticky=S+W, ipadx=15, pady=5, padx=25)
     
-    signUpButton = Button(signUpFrame, text="Sign up", command=lambda: signUp(), width=5, fg=black, bg=green, font=("Arial", 20))
+    signUpButton = Button(signUpFrame, text="Sign up", command=lambda: signUpFunc(signUpInputUN.get(), signUpInputP.get()), width=5, fg=black, bg=green, font=("Arial", 20))
     signUpButton.grid(row=3, column=0, columnspan=2, padx=30, sticky=W+E+S+N)
 
-    logInButton = Button(logInFrame, text="Log in", command=lambda: logIn(), width=5, fg=black, bg=green, font=("Arial", 20))
+    logInButton = Button(logInFrame, text="Log in", command=lambda: logInFunc(logInInputUN.get(), logInInputP.get()), width=5, fg=black, bg=green, font=("Arial", 20))
     logInButton.grid(row=3, column=0, columnspan=2, padx=30, sticky=W+E+S+N)
 
     ##############################inputs################################    
 
     logInInputUN = Entry(logInFrame, width=20, bg=purpleHeaderBg, fg=white, borderwidth=2, font=("Arial", myLittleFontSize), highlightthickness=1)
     logInInputUN.grid(row=1, column=1, padx=10, pady=10, sticky=E)
-    logInInputUN.insert(0, "User name")
+    logInInputUN.insert(0, "")
 
     logInInputP = Entry(logInFrame, width=20, bg=purpleHeaderBg, fg=white, borderwidth=2, font=("Arial", myLittleFontSize), highlightthickness=1)
     logInInputP.grid(row=2, column=1, padx=10, pady=10, sticky=E)
-    logInInputP.insert(0, "Password")
+    logInInputP.insert(0, "")
 
     signUpInputUN = Entry(signUpFrame, width=20, bg=purpleHeaderBg, fg=white, borderwidth=2, font=("Arial", myLittleFontSize), highlightthickness=1)
     signUpInputUN.grid(row=1, column=1, padx=10, pady=10, sticky=E)
-    signUpInputUN.insert(0, "User name")
+    signUpInputUN.insert(0, "")
 
     signUpInputP = Entry(signUpFrame, width=20, bg=purpleHeaderBg, fg=white, borderwidth=2, font=("Arial", myLittleFontSize), highlightthickness=1)
     signUpInputP.grid(row=2, column=1, padx=10, pady=10, sticky=E)
-    signUpInputP.insert(0, "Password")
+    signUpInputP.insert(0, "")
 
     root.mainloop()
