@@ -9,6 +9,8 @@ def getDataFromCategory(userName, category):
 
     if category == "Movies":
         movieData = pd.read_csv(myMovieData, encoding='latin-1')
+        # add category data to the returned data
+        movieData["category"] = "Movies"
         # putting together the data and deleting the duplicates
         mergedData = pd.merge(movieData,userData, indicator=True, how='outer').query('_merge=="left_only"').drop('_merge', axis=1)
         
@@ -20,6 +22,8 @@ def getDataFromCategory(userName, category):
             return mergedData.sample(n=1)
     else:
         ramcData = pd.read_csv(myRickAndMortyData, encoding='latin-1')
+        # add category data to the returned data
+        ramcData["category"] = "RAMC"
         # putting together the data and deleting the duplicates
         mergedData = pd.merge(ramcData,userData, indicator=True, how='outer').query('_merge=="left_only"').drop('_merge', axis=1)
         
