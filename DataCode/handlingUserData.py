@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import os
+import random
+from DataCode.getSpecificData import getDataFromCategory
 
 def signUp(userName, password):
     userDataLocation = "../DataFiles/UserData.csv"
@@ -56,15 +58,49 @@ def logIn(userName, pasW):
     else:
         # the user name and password are correct
         return True
-        
 
+# returns the length of the users data (so I know if there is enough to show statistics)
+def checkIfIShouldShowStatistics(userName):
+    userNameStripped = userName.strip()
+    userCsvFile = "../DataFiles/Users/" + userNameStripped + ".csv"
+    userData = pd.read_csv(userCsvFile)
+    return len(userData)
 
-# makeUserGameInfo("userName", "Movies", "guessWord", True, "E_D_F_Word", "S_R_O", 7, 1, False)
-def makeUserGameInfo(userName, category, guessWord, wonOrLost, correctGuesses, wrongGuesses, nbrOfGuesses, hintsUsed, gameCompleted):
+def saveUserGameInfo(userName, category, guessWord, wonOrLost, correctGuesses, wrongGuesses, nbrOfGuesses, hintsUsed, gameCompleted):
     userNameStripped = userName.strip()
     userCsvFile = "../DataFiles/Users/" + userNameStripped + ".csv"
 
-    writeThis = str(category) + "," + str(guessWord) + "," + str(wonOrLost) + "," + str(correctGuesses) + "," + str(wrongGuesses) + "," + str(nbrOfGuesses) + "," + str(hintsUsed) + "," + str(gameCompleted) 
+    writeThis = str(category) + "," + str(guessWord) + "," + str(wonOrLost) + "," + str(correctGuesses) + "," + str(wrongGuesses) + "," + str(nbrOfGuesses) + "," + str(hintsUsed) + "," + str(gameCompleted) + "\n" 
     
     with open(userCsvFile, "a", newline='') as f:
         f.write(writeThis)
+
+# makes random user data so I can test my statistics
+def makeRandomUserData(userName, amountOfUserData):
+    count = 0
+    while count < amountOfUserData:
+        getRAMC = getDataFromCategory(userName, "RAMC")
+        getMovie = getDataFromCategory(userName, "Movies")
+        
+        if random.randint(0,1) == 1:
+            wonOrLost = True
+            guessWord = getRAMC.guessWord
+            category = "RAMC"
+        else: 
+            wonOrLost = False
+            guessWord = getMovie.guessWord
+            category = "Movies"
+
+        correctGuesses = "D_F_R_T_S_H"
+        wrongGuesses = "P_S_R_E_W_X_WORD"
+        nbrOfGuesses = random.randint(0,10)
+        hintsUsed = random.randint(0,3)
+
+        guessWordFix = str(guessWord.values.tolist())
+        
+        guessWordFix2 = guessWordFix.replace("'", "")
+        guessWordFix3 = guessWordFix2.replace("[", "")
+        guessWordFixed = guessWordFix3.replace("]", "")
+       
+        saveUserGameInfo(userName, category, guessWordFixed, wonOrLost, correctGuesses, wrongGuesses, nbrOfGuesses, hintsUsed, True)
+        count = count + 1
