@@ -4,9 +4,7 @@ import tkinter.font as font
 from tkinter import ttk
 from DataCode import getSpecificData
 from HangmanFunctions.changeInfoForHangmanUI import changeInfoForHangmanUI
-# import sys
-# # to get from a ../ folder 
-# sys.path.append("..")
+
 def chooseACategoryPage(userName):
     root = Tk()
     root.title("Hangman")
@@ -15,19 +13,14 @@ def chooseACategoryPage(userName):
     root.configure(bg='black')
 
     ##############################colors################################
-    # all the colors I will use
-    green = "#00FF19"
     red = "#f00"
     blue = "#2C0AFF"
     white = "#fff"
     black = "#000"
     purpleHeaderBg = "#9B4AEC"
-    purpleLogInAndSignInBg = "#6912C0"
 
     ##############################variables################################
-    myWidth2 = 15
     myFontSize = 30
-    hintFontSize = 15
 
     ##############################frames################################
     headerFrame = LabelFrame(root, bg=purpleHeaderBg)
@@ -43,16 +36,19 @@ def chooseACategoryPage(userName):
     category = Label(contentFrame, text="Choose a category", bg=black, fg=white, font=("Arial", myFontSize))
     category.grid(row=0, column=0, columnspan=3, sticky=W+N+E+S, pady=5)
     
-    ##############################button functions################################    
+    ##############################button functions################################       
     def exitGame():
         # add a function to save progress later
-        root.quit()      
+        root.quit()    
 
     def movies():
+        root.destroy()
         changeInfoForHangmanUI(userName, getSpecificData.getDataFromCategory(userName, "Movies"))
 
     def ramc():
-        changeInfoForHangmanUI(userName, getSpecificData.getDataFromCategory(userName, "RAMC"))
+        root.destroy()
+        getData = getSpecificData.getDataFromCategory(userName, "RAMC")
+        changeInfoForHangmanUI(userName, getData)
 
     ##############################buttons################################
     exitButton = Button(contentFrame, text="Exit", command=exitGame, width=8, fg=white, bg=red, font=("Arial", myFontSize))
