@@ -6,8 +6,10 @@ from UI.getLines import showLines
 from tkinter import messagebox
 import os
 from os import listdir
-from UI.GameOverPage import hangmanGameOverPage
 from DataCode.handlingUserData import saveUserGameInfo
+
+if __name__ != "UI.HangmanGameUI":
+    from UI.GameOverPage import hangmanGameOverPage
 
 def hangmanGamePage(userName, guessWord, categoryInfoText, originalLinesText, hintTexts):
     root = Tk()
@@ -82,6 +84,11 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, originalLinesText, hi
     
     ##############################button functions################################       
     def exitGame():
+        saveUserData(False)
+        # add a function to save progress later
+        root.destroy()   
+    
+    def saveUserData(gameCompleted):
         nbrOfGuesses = len(wrongGuesses)+len(correctGuesses)
         
         correctGuessesToSend = ""
@@ -91,17 +98,17 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, originalLinesText, hi
         wrongGuessesToSend = ""
         for i in wrongGuesses:
             wrongGuessesToSend = wrongGuessesToSend + i
-            
-        saveUserGameInfo(userName, categoryInfoText, guessWord, "", correctGuessesToSend, wrongGuessesToSend, nbrOfGuesses, hintNbr, False)
-        # add a function to save progress later
-        root.destroy()    
+
+        saveUserGameInfo(userName, categoryInfoText, guessWord, "", correctGuessesToSend, wrongGuessesToSend, nbrOfGuesses, hintNbr, gameCompleted)
+
     
     def gameOver(wonOrLost):
-        ## REMEMBER TO ADD CODE TO SAVE THE USERS DATA
         if wonOrLost == "Won":
+            saveUserData(True)
             root.destroy()
             hangmanGameOverPage(userName, "You won!", guessWord)
         else:
+            saveUserData(True)
             root.destroy()
             hangmanGameOverPage(userName, "You lost!", guessWord)
 
