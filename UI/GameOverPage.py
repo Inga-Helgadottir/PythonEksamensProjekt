@@ -7,7 +7,7 @@ from getLines import showLines
 def hangmanGameOverPage():#categoryInfoText, spaceForLinesText, listOfGuessedText, hintTexts):
     root = Tk()
     root.title("Hangman")
-    root.iconbitmap("HangmanIcon.ico")
+    root.iconbitmap("UI/HangmanIcon.ico")
     root.geometry("900x600")
     root.configure(bg='black')
 
