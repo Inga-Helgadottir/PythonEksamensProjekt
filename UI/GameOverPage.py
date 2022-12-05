@@ -2,9 +2,8 @@ from tkinter import *
 from PIL import ImageTk, Image
 import tkinter.font as font
 from tkinter import ttk
-from getLines import showLines
 
-def hangmanGameOverPage():#categoryInfoText, spaceForLinesText, listOfGuessedText, hintTexts):
+def hangmanGameOverPage(userName, winLooseText, theAnswerWasText):
     root = Tk()
     root.title("Hangman")
     root.iconbitmap("UI/HangmanIcon.ico")
@@ -41,18 +40,17 @@ def hangmanGameOverPage():#categoryInfoText, spaceForLinesText, listOfGuessedTex
     gameOver.grid(row=0, column=0, columnspan=3, sticky=W+N+E+S, pady=5)
     
     # winLoose = Label(contentFrame, text=winLooseText, bg=black, fg=white, font=("Arial", myFontSize))
-    winLoose = Label(contentFrame, text="winLooseText", bg=black, fg=white, font=("Arial", myFontSize))
+    winLoose = Label(contentFrame, text=winLooseText, bg=black, fg=white, font=("Arial", myFontSize))
     winLoose.grid(row=1, column=0, columnspan=3, sticky=W+N+E+S, pady=5)
 
     # theAnswer = Label(contentFrame, text=theAnswerText, bg=black, fg=white, font=("Arial", myFontSize))
-    theAnswer = Label(contentFrame, text="theAnswerText", bg=black, fg=white, font=("Arial", myFontSize))
+    theAnswer = Label(contentFrame, text="The answer was: " + theAnswerWasText, bg=black, fg=white, font=("Arial", myFontSize))
     theAnswer.grid(row=2, column=0, columnspan=3, sticky=W+N+E+S, pady=5)
 
     
-    ##############################button functions################################    
+    ##############################button functions################################      
     def exitGame():
-        # add a function to save progress later
-        root.quit()      
+        root.quit()    
 
     ##############################buttons################################
     exitButton = Button(contentFrame, text="Exit", command=exitGame, width=8, fg=white, bg=red, font=("Arial", myFontSize))
@@ -62,7 +60,7 @@ def hangmanGameOverPage():#categoryInfoText, spaceForLinesText, listOfGuessedTex
     playAgainButton.grid(row=3, column=0, sticky=W+S, pady=25)
     
     ##############################image################################    
-    hangmanImg = ImageTk.PhotoImage(Image.open("../HangmanFunctions/Images/step10.jpg"))
+    hangmanImg = ImageTk.PhotoImage(Image.open("../EksamensProjekt/HangmanFunctions/Images/step10.jpg"), master=contentFrame)
     image = Label(contentFrame, image=hangmanImg)
     image.grid(row=3, column=1, columnspan=2, rowspan=2, sticky=S+E+W+N, pady=20, padx=30)
 
