@@ -1,21 +1,24 @@
-id,category,guessWord,wonOrLost,correctGuesses,wrongGuesses,nbrOfGuesses,hintsUsed,gameCompleted
-1,RAMC,Alien Googah,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,4,2,True
-2,RAMC,Alien Morty,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,2,3,True
-3,Movies,Time of the Wolf,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,3,0,True
-4,RAMC,Amish Cyborg,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,7,1,True
-5,RAMC,Alien Rick,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,9,1,True
-6,Movies,Kiss the Water,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,7,3,True
-7,Movies,The King,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,3,1,True
-8,Movies,Ella Enchanted,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,1,0,True
-9,RAMC,Rick Sanchez,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,2,1,True
-10,RAMC,Abadango Cluster Princess,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,4,3,True
-11,Movies,Bottom of the 9th,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,10,0,True
-12,Movies,Zenith,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,3,3,True
-13,RAMC,Alexander,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,7,2,True
-14,Movies,Land of Mine (Under Sandet),False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,4,0,True
-15,Movies,"No Mans Land",False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,1,3,True
-16,Movies,Congo,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,2,3,True
-17,Movies,Pacific Rim,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,8,3,True
-18,RAMC,Albert Einstein,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,8,3,True
-19,Movies,How It Ends,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,9,0,True
-20,RAMC,Agency Director,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,1,3,True
+category,guessWord,wonOrLost,correctGuesses,wrongGuesses,nbrOfGuesses,hintsUsed,gameCompleted
+RAMC,Alien Googah,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,4,2,True
+RAMC,Alien Morty,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,2,3,True
+Movies,Time of the Wolf,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,3,0,True
+RAMC,Amish Cyborg,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,7,1,True
+RAMC,Alien Rick,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,9,1,True
+Movies,Kiss the Water,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,7,3,True
+Movies,The King,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,3,1,True
+Movies,Ella Enchanted,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,1,0,True
+RAMC,Rick Sanchez,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,2,1,True
+RAMC,Abadango Cluster Princess,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,4,3,True
+Movies,Bottom of the 9th,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,10,0,True
+Movies,Zenith,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,3,3,True
+RAMC,Alexander,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,7,2,True
+Movies,Land of Mine (Under Sandet),False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,4,0,True
+Movies,"No Mans Land",False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,1,3,True
+Movies,Congo,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,2,3,True
+Movies,Pacific Rim,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,8,3,True
+RAMC,Albert Einstein,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,8,3,True
+Movies,How It Ends,False,D_F_R_T_S_H,P_S_R_E_W_X_WORD,9,0,True
+RAMC,Agency Director,True,D_F_R_T_S_H,P_S_R_E_W_X_WORD,1,3,True
+RAMC,Abradolf Lincler,,ABDABRADOLF LINCLER,,4,0,True
+RAMC,Jerry Smith,,JERRY SMITH,,1,0,True
+RAMC,Ants in my Eyes Johnson,,ANTS IN MY EYES JOHNSON,,1,0,True

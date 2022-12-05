@@ -6,7 +6,7 @@ from DataCode.getSpecificData import getDataFromCategory
 
 userCsvFileStart = "../EksamensProjekt/DataFiles/Users/"
 usersCsvFile = "../EksamensProjekt/DataFiles/UserData.csv"
-
+print
 def signUp(userName, password):
     userDataLocation = usersCsvFile
     userNameStripped = userName.strip()
@@ -48,7 +48,6 @@ def signUp(userName, password):
             return "You are now logged in"
 
 def logIn(userName, pasW):
-    # print(pasW)
     userDataLocation = usersCsvFile
     df = pd.read_csv(userDataLocation)
     # checking if the username and password are correct  

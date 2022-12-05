@@ -7,9 +7,7 @@ from tkinter import messagebox
 import os
 from os import listdir
 from DataCode.handlingUserData import saveUserGameInfo
-
-if __name__ != "UI.HangmanGameUI":
-    from UI.GameOverPage import hangmanGameOverPage
+from UI.GameOverPage import hangmanGameOverPage
 
 def hangmanGamePage(userName, guessWord, categoryInfoText, originalLinesText, hintTexts):
     root = Tk()

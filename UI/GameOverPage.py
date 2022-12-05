@@ -2,7 +2,6 @@ from tkinter import *
 from PIL import ImageTk, Image
 import tkinter.font as font
 from tkinter import ttk
-from UI.ChooseCategoryPage import chooseACategoryPage
 
 def hangmanGameOverPage(userName, winLooseText, theAnswerWasText):
     root = Tk()
@@ -13,18 +12,13 @@ def hangmanGameOverPage(userName, winLooseText, theAnswerWasText):
 
     ##############################colors################################
     # all the colors I will use
-    green = "#00FF19"
     red = "#f00"
-    blue = "#2C0AFF"
     white = "#fff"
     black = "#000"
     purpleHeaderBg = "#9B4AEC"
-    purpleLogInAndSignInBg = "#6912C0"
 
     ##############################variables################################
-    myWidth2 = 15
     myFontSize = 30
-    hintFontSize = 15
 
     ##############################frames################################
     headerFrame = LabelFrame(root, bg=purpleHeaderBg)
@@ -53,16 +47,9 @@ def hangmanGameOverPage(userName, winLooseText, theAnswerWasText):
     def exitGame():
         root.destroy()    
 
-    def playAgain():
-        root.destroy()  
-        chooseACategoryPage(userName)
-
     ##############################buttons################################
     exitButton = Button(contentFrame, text="Exit", command=exitGame, width=8, fg=white, bg=red, font=("Arial", myFontSize))
     exitButton.grid(row=4, column=0, sticky=S+W, ipadx=10, pady=25)
-    
-    playAgainButton = Button(contentFrame, text="Play again", command=playAgain, fg=black, bg=green, font=("Arial", myFontSize))
-    playAgainButton.grid(row=3, column=0, sticky=W+S, pady=25)
     
     ##############################image################################    
     hangmanImg = ImageTk.PhotoImage(Image.open("../EksamensProjekt/HangmanFunctions/Images/step10.jpg"), master=contentFrame)

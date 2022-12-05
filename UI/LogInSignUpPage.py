@@ -71,9 +71,9 @@ def loginSignUpPage():
         root.quit()    
 
     def logInFunc(userName, password):
-        showStatistics = checkIfIShouldShowStatistics(userName)
         checkLogin = handlingUserData.logIn(userName, password)
         if checkLogin:
+            showStatistics = checkIfIShouldShowStatistics(userName)
             if showStatistics > 4:
                 root.destroy()
                 startOrStatistics(userName)

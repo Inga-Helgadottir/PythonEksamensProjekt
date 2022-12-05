@@ -3,8 +3,6 @@ from UI.getLines import showLines
 import re
 
 def changeInfoForHangmanUI(user, toChange):
-    print("toChange")
-    print(toChange)
     guessWord = str(toChange["guessWord"].values[0]).strip()
 
     category = str(toChange["category"].values[0]).strip()
