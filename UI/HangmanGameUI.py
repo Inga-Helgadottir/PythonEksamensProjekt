@@ -6,8 +6,10 @@ from UI.getLines import showLines
 from tkinter import messagebox
 import os
 from os import listdir
+from UI.GameOverPage import hangmanGameOverPage
+from DataCode.handlingUserData import saveUserGameInfo
 
-def hangmanGamePage(userName, guessWord, categoryInfoText, linesText, listOfGuessedText, hintTexts):
+def hangmanGamePage(userName, guessWord, categoryInfoText, originalLinesText, hintTexts):
     root = Tk()
     root.title("Hangman")
     root.iconbitmap("UI/HangmanIcon.ico")
@@ -28,23 +30,11 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, linesText, listOfGues
     global hintNbr
     hintNbr = 0
 
+    global linesText
+    linesText = originalLinesText
+
     global currentHintText
     currentHintText = ""
-
-    global hangmanImages
-    hangmanImages = []
-    
-    folder_dir = "../EksamensProjekt/HangmanFunctions/Images/"
-    for images in os.listdir(folder_dir):
-        if (images.endswith(".jpg")):
-            hangmanImages.append(images)
-
-    # making sure that step10 is last
-    myorder = [0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 2]
-    hangmanImages = [hangmanImages[i] for i in myorder]    
-
-    global currentHangmanImg
-    currentHangmanImg = "../EksamensProjekt/HangmanFunctions/Images/" + hangmanImages[0]
 
     global correctGuesses
     correctGuesses = []
@@ -52,6 +42,21 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, linesText, listOfGues
     global wrongGuesses
     wrongGuesses = []
 
+    global hangmanImages
+    hangmanImages = []
+    
+    folder_dir = "../EksamensProjekt/HangmanFunctions/Images/"
+    for images in os.listdir(folder_dir):
+        if (images.endswith(".jpg")):
+            hangmanImages.append(folder_dir + images)
+
+    # making sure that step10 is last
+    myorder = [0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 2]
+    hangmanImages = [hangmanImages[i] for i in myorder]  
+
+    global hangmanImageIndex  
+    hangmanImageIndex = 0
+    
     myWidth2 = 15
     myFontSize = 30
     hintFontSize = 15
@@ -70,18 +75,39 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, linesText, listOfGues
     categoryInfo = Label(contentFrame, text=categoryInfoText, bg=black, fg=white, font=("Arial", myFontSize))
     categoryInfo.grid(row=0, column=0, columnspan=2, sticky=W+N)
 
-    spaceForLines = Label(contentFrame, text=linesText, bg=black, fg=white, font=("Arial", myFontSize))
+    spaceForLines = Label(contentFrame, text=originalLinesText, bg=black, fg=white, font=("Arial", myFontSize))
     spaceForLines.grid(row=1, column=0, columnspan=2, sticky=W+N)
-
-    listOfGuessed = Label(contentFrame, text=listOfGuessedText, bg=black, fg=white, font=("Arial", myFontSize))
-    listOfGuessed.grid(row=2, column=0, columnspan=2, sticky=W+N, pady=20)
     
     hintText = Label(contentFrame, text=currentHintText, bg=green, fg=black, font=("Arial", hintFontSize))
     
-    ##############################button functions################################    
+    ##############################button functions################################       
     def exitGame():
+        nbrOfGuesses = len(wrongGuesses)+len(correctGuesses)
+        print("here--------------------------")
+        print(userName)
+        print(categoryInfoText)
+        print(guessWord)
+        print(str(correctGuesses))
+        print(str(wrongGuesses))
+        print(nbrOfGuesses)
+        print(hintNbr)
+        saveUserGameInfo(userName, categoryInfoText, guessWord, "", str(correctGuesses), str(wrongGuesses), nbrOfGuesses, hintNbr, False)
         # add a function to save progress later
-        root.quit()      
+        root.destroy()    
+    
+    def gameOver(wonOrLost):
+        ## REMEMBER TO ADD CODE TO SAVE THE USERS DATA
+        if wonOrLost == "Won":
+
+            root.destroy()
+            hangmanGameOverPage(userName, "You won!", guessWord)
+        else:
+            root.destroy()
+            hangmanGameOverPage(userName, "You lost!", guessWord)
+
+    def checkIfWinner(correct, lines):
+        if correct.strip() == lines.strip():
+            gameOver("Won")
 
     def hintChecker():
         global hintNbr
@@ -120,32 +146,72 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, linesText, listOfGues
             hintButton.grid(row=0, column=2, sticky=E+N, pady=5)            
             return
 
+    def updateImage():
+        global hangmanImageIndex
+        hangmanImageIndex = hangmanImageIndex + 1
+
+        if hangmanImageIndex >= len(hangmanImages):
+            gameOver("Lost")
+        else:
+            hangmanImg = ImageTk.PhotoImage(Image.open(hangmanImages[hangmanImageIndex]), master=contentFrame)
+            image = Label(contentFrame, image=hangmanImg)
+            image.photo = hangmanImg
+            image.grid(row=2, column=2, sticky=W+N, pady=20)
+
     def handleGuess(guess):
-        # guessWord, categoryInfoText, LinesText, listOfGuessedText, hintTexts
-        guessCheck = guessWord.upper().strip()
+        correctGuessWord = guessWord.upper().strip()
         currentGuessUpper = guess.upper().strip()
+
+        print("correctGuessWord")
+        print(correctGuessWord)
+
         if len(guess) == 0:
             messagebox.showerror("Input error", "The input is empty")
         elif len(guess) == 1:
-            # for i in guessWord:
+            print(correctGuessWord.find(currentGuessUpper))
+            if correctGuessWord.find(currentGuessUpper) == -1:
+                wrongGuesses.append(currentGuessUpper)
+                listOfGuessed = Label(contentFrame, text=wrongGuesses, bg=black, fg=white, font=("Arial", myFontSize))
+                listOfGuessed.grid(row=2, column=0, columnspan=2, sticky=W+N, pady=20)
+                updateImage()
+            else:
+                # here i count how many times the letter comes up in the word
+                countingLetters = correctGuessWord.count(currentGuessUpper)
 
-            return "CHECK AGAINST GUESS WORD"
+                # this is so i can access the global variable with the lines _ _ _
+                global linesText
+
+                # here i take the linesText(the text that shows the lines _ _ _  _ _) and make it a list
+                linelist = list(linesText)
+
+                # here i make the correct guess word into a list
+                correctGuessWordList = list(correctGuessWord)
+                # then i join it with spaces so that it matches my lines
+                guessWordWithSpaces = ' '.join(correctGuessWordList)
+
+                if countingLetters == 1:
+                    # here i check where the letter is in the word and use that index to change the line to the letter
+                    linelist[guessWordWithSpaces.find(currentGuessUpper)] = currentGuessUpper
+                else:
+                    # here i made an id that i will add to for each loop
+                    idOfLetter = 0
+                    # here i loop through the correct word and check each letter and replace the old one
+                    for i in guessWordWithSpaces:
+                        if i == currentGuessUpper:
+                            linelist[idOfLetter] = currentGuessUpper
+                        idOfLetter = idOfLetter + 1
+
+                linesText = ''.join(linelist)
+                spaceForLines.config(text=linesText)
+                checkIfWinner(guessWordWithSpaces, linesText)
         else:
-            if guessCheck == currentGuessUpper:
+            if correctGuessWord == currentGuessUpper:
                 print("yes")
-                # you won the game
-                    # save info to personal user data
+                gameOver("Won")
             else:
                 print("no")
-                # wrongGuesses.append(guess)
-        # lists of guesses:
-            # correctGuesses.append(guess)
-            # wrongGuesses.append(guess)
-
-        # def gameOver(wonOrLost):
-        #     if wonOrLost == "Won":
-        #         S
-        #     else:
+                wrongGuesses.append(guess)
+                updateImage()
 
 
     ##############################buttons################################
@@ -163,7 +229,7 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, linesText, listOfGues
     guessSentenceInput.grid(row=3, column=1, ipady=6, pady=11)
     
     ##############################image################################  
-    hangmanImg = ImageTk.PhotoImage(Image.open(currentHangmanImg), master=contentFrame)
+    hangmanImg = ImageTk.PhotoImage(Image.open(hangmanImages[hangmanImageIndex]), master=contentFrame)
     image = Label(contentFrame, image=hangmanImg)
     image.grid(row=2, column=2, sticky=W+N, pady=20)
 
