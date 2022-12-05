@@ -83,22 +83,22 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, originalLinesText, hi
     ##############################button functions################################       
     def exitGame():
         nbrOfGuesses = len(wrongGuesses)+len(correctGuesses)
-        print("here--------------------------")
-        print(userName)
-        print(categoryInfoText)
-        print(guessWord)
-        print(str(correctGuesses))
-        print(str(wrongGuesses))
-        print(nbrOfGuesses)
-        print(hintNbr)
-        saveUserGameInfo(userName, categoryInfoText, guessWord, "", str(correctGuesses), str(wrongGuesses), nbrOfGuesses, hintNbr, False)
+        
+        correctGuessesToSend = ""
+        for i in correctGuesses:
+            correctGuessesToSend = correctGuessesToSend + i
+
+        wrongGuessesToSend = ""
+        for i in wrongGuesses:
+            wrongGuessesToSend = wrongGuessesToSend + i
+            
+        saveUserGameInfo(userName, categoryInfoText, guessWord, "", correctGuessesToSend, wrongGuessesToSend, nbrOfGuesses, hintNbr, False)
         # add a function to save progress later
         root.destroy()    
     
     def gameOver(wonOrLost):
         ## REMEMBER TO ADD CODE TO SAVE THE USERS DATA
         if wonOrLost == "Won":
-
             root.destroy()
             hangmanGameOverPage(userName, "You won!", guessWord)
         else:
@@ -204,12 +204,12 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, originalLinesText, hi
                 linesText = ''.join(linelist)
                 spaceForLines.config(text=linesText)
                 checkIfWinner(guessWordWithSpaces, linesText)
+                correctGuesses.append(currentGuessUpper)
         else:
             if correctGuessWord == currentGuessUpper:
-                print("yes")
+                correctGuesses.append(currentGuessUpper)
                 gameOver("Won")
             else:
-                print("no")
                 wrongGuesses.append(guess)
                 updateImage()
 
