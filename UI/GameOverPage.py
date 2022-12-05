@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import ImageTk, Image
 import tkinter.font as font
 from tkinter import ttk
+from UI.ChooseCategoryPage import chooseACategoryPage
 
 def hangmanGameOverPage(userName, winLooseText, theAnswerWasText):
     root = Tk()
@@ -50,13 +51,17 @@ def hangmanGameOverPage(userName, winLooseText, theAnswerWasText):
     
     ##############################button functions################################      
     def exitGame():
-        root.quit()    
+        root.destroy()    
+
+    def playAgain():
+        root.destroy()  
+        chooseACategoryPage(userName)
 
     ##############################buttons################################
     exitButton = Button(contentFrame, text="Exit", command=exitGame, width=8, fg=white, bg=red, font=("Arial", myFontSize))
     exitButton.grid(row=4, column=0, sticky=S+W, ipadx=10, pady=25)
     
-    playAgainButton = Button(contentFrame, text="Play again", command=lambda: playAgain(), fg=black, bg=green, font=("Arial", myFontSize))
+    playAgainButton = Button(contentFrame, text="Play again", command=playAgain, fg=black, bg=green, font=("Arial", myFontSize))
     playAgainButton.grid(row=3, column=0, sticky=W+S, pady=25)
     
     ##############################image################################    
