@@ -1,0 +1,10 @@
+id,category,guessWord,wonOrLost,correctGuesses,wrongGuesses,nbrOfGuesses,hintsUsed,gameCompleted
+1,RAMC,Alien Googah,Lost,AO,SB,4,0,True
+2,RAMC,Antenna Rick,Won,A,SOL,4,2,False
+3,RAMC,Albert Einstein,Lost,AB,KJ,4,0,True
+4,RAMC,Alien Rick,Won,ALIEN RICK,,1,0,False
+5,RAMC,Beth Smith,Won,SMI,AK,5,3,False
+6,RAMC,Ants in my Eyes Johnson,Won,AS,F,3,1,True
+7,Movies,The Thing,Won,THE,AS,5,1,False
+8,Movies,The Errand Boy,Lost,THENARDBO,SC,11,0,True
+9,RAMC,Antenna Morty,,ANATEMOR,SW,10,0,True
