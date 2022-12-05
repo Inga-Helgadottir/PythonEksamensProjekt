@@ -1,10 +1,13 @@
 import pandas as pd
 
+userCsvFileStart = "../EksamensProjekt/DataFiles/Users/"
+usersCsvFile = "../EksamensProjekt/DataFiles/UserData.csv"
+
 def getDataFromCategory(userName, category):
-    myMovieData = "../DataFiles/myMovieData.csv"
-    myRickAndMortyData = "../DataFiles/myRickAndMortyData.csv"
+    myMovieData = "../EksamensProjekt/DataFiles/myMovieData.csv"
+    myRickAndMortyData = "../EksamensProjekt/DataFiles/myRickAndMortyData.csv"
     userNameStripped = userName.strip()
-    userCsvFile = "../DataFiles/Users/" + userNameStripped + ".csv"
+    userCsvFile = userCsvFileStart + userNameStripped + ".csv"
     userData = pd.read_csv(userCsvFile, usecols = ["category", "guessWord"])
 
     if category == "Movies":
