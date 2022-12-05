@@ -1,13 +1,18 @@
 import pandas as pd
 import numpy as np
 import os
+# import sys
+# sys.path.append("..")
 import random
 from DataCode.getSpecificData import getDataFromCategory
 
+userCsvFileStart = "../EksamensProjekt/DataFiles/Users/"
+usersCsvFile = "../EksamensProjekt/DataFiles/UserData.csv"
+
 def signUp(userName, password):
-    userDataLocation = "../DataFiles/UserData.csv"
+    userDataLocation = usersCsvFile
     userNameStripped = userName.strip()
-    userCsvFile = "../DataFiles/Users/" + userNameStripped + ".csv"
+    userCsvFile = userCsvFileStart + userNameStripped + ".csv"
 
     # if there are no users
     if os.stat(userDataLocation).st_size == 0:
@@ -46,7 +51,7 @@ def signUp(userName, password):
 
 def logIn(userName, pasW):
     # print(pasW)
-    userDataLocation = "../DataFiles/UserData.csv"
+    userDataLocation = usersCsvFile
     df = pd.read_csv(userDataLocation)
     # checking if the username and password are correct  
     checkingUserAndPass = df.loc[(df['userName'] == userName) & (df['password'] == pasW) & (df['userCsvFile'] != "userCsvFile")]
@@ -62,13 +67,13 @@ def logIn(userName, pasW):
 # returns the length of the users data (so I know if there is enough to show statistics)
 def checkIfIShouldShowStatistics(userName):
     userNameStripped = userName.strip()
-    userCsvFile = "../DataFiles/Users/" + userNameStripped + ".csv"
+    userCsvFile = userCsvFileStart + userNameStripped + ".csv"
     userData = pd.read_csv(userCsvFile)
     return len(userData)
 
 def saveUserGameInfo(userName, category, guessWord, wonOrLost, correctGuesses, wrongGuesses, nbrOfGuesses, hintsUsed, gameCompleted):
     userNameStripped = userName.strip()
-    userCsvFile = "../DataFiles/Users/" + userNameStripped + ".csv"
+    userCsvFile = userCsvFileStart + userNameStripped + ".csv"
 
     writeThis = str(category) + "," + str(guessWord) + "," + str(wonOrLost) + "," + str(correctGuesses) + "," + str(wrongGuesses) + "," + str(nbrOfGuesses) + "," + str(hintsUsed) + "," + str(gameCompleted) + "\n" 
     
@@ -104,3 +109,5 @@ def makeRandomUserData(userName, amountOfUserData):
        
         saveUserGameInfo(userName, category, guessWordFixed, wonOrLost, correctGuesses, wrongGuesses, nbrOfGuesses, hintsUsed, True)
         count = count + 1
+
+# def getDataReadyForGame(userName, data):
