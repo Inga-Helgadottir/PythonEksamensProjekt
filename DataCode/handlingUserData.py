@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
 import os
-# import sys
-# sys.path.append("..")
 import random
 from DataCode.getSpecificData import getDataFromCategory
 
@@ -70,10 +68,14 @@ def checkIfIShouldShowStatistics(userName):
     userCsvFile = userCsvFileStart + userNameStripped + ".csv"
     userData = pd.read_csv(userCsvFile)
     return len(userData)
-
+        
+# saveUserGameInfo(userName, categoryInfoText, guessWord, "", str(correctGuesses), str(wrongGuesses), nbrOfGuesses, hintNbr, False)
 def saveUserGameInfo(userName, category, guessWord, wonOrLost, correctGuesses, wrongGuesses, nbrOfGuesses, hintsUsed, gameCompleted):
     userNameStripped = userName.strip()
     userCsvFile = userCsvFileStart + userNameStripped + ".csv"
+
+    if category == "Rick and Morty character":
+        category = "RAMC"
 
     writeThis = str(category) + "," + str(guessWord) + "," + str(wonOrLost) + "," + str(correctGuesses) + "," + str(wrongGuesses) + "," + str(nbrOfGuesses) + "," + str(hintsUsed) + "," + str(gameCompleted) + "\n" 
     
@@ -109,5 +111,3 @@ def makeRandomUserData(userName, amountOfUserData):
        
         saveUserGameInfo(userName, category, guessWordFixed, wonOrLost, correctGuesses, wrongGuesses, nbrOfGuesses, hintsUsed, True)
         count = count + 1
-
-# def getDataReadyForGame(userName, data):
