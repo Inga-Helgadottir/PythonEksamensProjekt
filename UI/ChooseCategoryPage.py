@@ -2,12 +2,15 @@ from tkinter import *
 from PIL import ImageTk, Image
 import tkinter.font as font
 from tkinter import ttk
-from getLines import showLines
-
+from DataCode import getSpecificData
+from HangmanFunctions.changeInfoForHangmanUI import changeInfoForHangmanUI
+# import sys
+# # to get from a ../ folder 
+# sys.path.append("..")
 def chooseACategoryPage(userName):
     root = Tk()
     root.title("Hangman")
-    root.iconbitmap("HangmanIcon.ico")
+    root.iconbitmap("UI/HangmanIcon.ico")
     root.geometry("900x600")
     root.configure(bg='black')
 
@@ -45,6 +48,12 @@ def chooseACategoryPage(userName):
         # add a function to save progress later
         root.quit()      
 
+    def movies():
+        changeInfoForHangmanUI(userName, getSpecificData.getDataFromCategory(userName, "Movies"))
+
+    def ramc():
+        changeInfoForHangmanUI(userName, getSpecificData.getDataFromCategory(userName, "RAMC"))
+
     ##############################buttons################################
     exitButton = Button(contentFrame, text="Exit", command=exitGame, width=8, fg=white, bg=red, font=("Arial", myFontSize))
     exitButton.grid(row=3, column=0, sticky=W+N+S+E, ipadx=10, pady=25)
@@ -52,7 +61,7 @@ def chooseACategoryPage(userName):
     movieButton = Button(contentFrame, text="Movie names", command=lambda: movies(), fg=white, bg=blue, font=("Arial", myFontSize))
     movieButton.grid(row=1, column=0, sticky=W+N+S+E, ipadx=10, pady=25)
 
-    RAMButton = Button(contentFrame, text="Rick and morty characters", command=lambda: ram(), fg=white, bg=blue, font=("Arial", myFontSize))
+    RAMButton = Button(contentFrame, text="Rick and morty characters", command=lambda: ramc(), fg=white, bg=blue, font=("Arial", myFontSize))
     RAMButton.grid(row=2, column=0, sticky=W+N+S+E, ipadx=10, pady=25)
     
     root.mainloop()
