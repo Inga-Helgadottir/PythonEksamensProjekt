@@ -2,16 +2,15 @@ from tkinter import *
 from PIL import ImageTk, Image
 import tkinter.font as font
 from tkinter import ttk
-from getLines import showLines
+from UI.getLines import showLines
 from tkinter import messagebox
-
 import os
 from os import listdir
 
-def hangmanGamePage(userName, guessWord, categoryInfoText, spaceForLinesText, listOfGuessedText, hintTexts):
+def hangmanGamePage(userName, guessWord, categoryInfoText, linesText, listOfGuessedText, hintTexts):
     root = Tk()
     root.title("Hangman")
-    root.iconbitmap("HangmanIcon.ico")
+    root.iconbitmap("UI/HangmanIcon.ico")
     root.geometry("1200x800")
     root.configure(bg='black')
 
@@ -35,7 +34,7 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, spaceForLinesText, li
     global hangmanImages
     hangmanImages = []
     
-    folder_dir = "../HangmanFunctions/Images"
+    folder_dir = "../EksamensProjekt/HangmanFunctions/Images/"
     for images in os.listdir(folder_dir):
         if (images.endswith(".jpg")):
             hangmanImages.append(images)
@@ -45,7 +44,7 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, spaceForLinesText, li
     hangmanImages = [hangmanImages[i] for i in myorder]    
 
     global currentHangmanImg
-    currentHangmanImg = "../HangmanFunctions/Images/" + hangmanImages[0]
+    currentHangmanImg = "../EksamensProjekt/HangmanFunctions/Images/" + hangmanImages[0]
 
     global correctGuesses
     correctGuesses = []
@@ -71,8 +70,8 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, spaceForLinesText, li
     categoryInfo = Label(contentFrame, text=categoryInfoText, bg=black, fg=white, font=("Arial", myFontSize))
     categoryInfo.grid(row=0, column=0, columnspan=2, sticky=W+N)
 
-    spaceForLines = Label(contentFrame, text=spaceForLinesText, bg=black, fg=white, font=("Arial", myFontSize))
-    spaceForLines.grid(row=1, column=0, sticky=W+N)
+    spaceForLines = Label(contentFrame, text=linesText, bg=black, fg=white, font=("Arial", myFontSize))
+    spaceForLines.grid(row=1, column=0, columnspan=2, sticky=W+N)
 
     listOfGuessed = Label(contentFrame, text=listOfGuessedText, bg=black, fg=white, font=("Arial", myFontSize))
     listOfGuessed.grid(row=2, column=0, columnspan=2, sticky=W+N, pady=20)
@@ -116,16 +115,20 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, spaceForLinesText, li
             hintText = Label(contentFrame, text=currentHintText, bg=green, fg=black, font=("Arial", hintFontSize))
             hintText.grid(row=7, column=0, columnspan=3, sticky=S+E+W+N, ipadx=10, pady=8)
             hintNbr = 3
-            # moves the hint button out of the line of vision
-            hintButton.grid(row=50, column=50)
+            # disables the hint button
+            hintButton = Button(contentFrame, text="Hint", fg=black, bg="#727375", font=("Arial", myFontSize), state=DISABLED)
+            hintButton.grid(row=0, column=2, sticky=E+N, pady=5)            
             return
 
     def handleGuess(guess):
-        guessCheck = guessWord.upper()
-        currentGuessUpper = guess.upper()
+        # guessWord, categoryInfoText, LinesText, listOfGuessedText, hintTexts
+        guessCheck = guessWord.upper().strip()
+        currentGuessUpper = guess.upper().strip()
         if len(guess) == 0:
             messagebox.showerror("Input error", "The input is empty")
         elif len(guess) == 1:
+            # for i in guessWord:
+
             return "CHECK AGAINST GUESS WORD"
         else:
             if guessCheck == currentGuessUpper:
@@ -159,8 +162,8 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, spaceForLinesText, li
     guessSentenceInput = Entry(contentFrame, bg=purpleLogInAndSignInBg, fg=white, borderwidth=2, font=("Arial", myFontSize))
     guessSentenceInput.grid(row=3, column=1, ipady=6, pady=11)
     
-    ##############################image################################    
-    hangmanImg = ImageTk.PhotoImage(Image.open(currentHangmanImg))
+    ##############################image################################  
+    hangmanImg = ImageTk.PhotoImage(Image.open(currentHangmanImg), master=contentFrame)
     image = Label(contentFrame, image=hangmanImg)
     image.grid(row=2, column=2, sticky=W+N, pady=20)
 
