@@ -2,13 +2,13 @@ from tkinter import *
 from DataCode import handlingUserData
 from tkinter import messagebox 
 from DataCode.handlingUserData import checkIfIShouldShowStatistics
-from ChooseCategoryPage import chooseACategoryPage
-from StartGameOrStatistics import startOrStatistics
+from UI.ChooseCategoryPage import chooseACategoryPage
+from UI.StartGameOrStatistics import startOrStatistics
 
 def loginSignUpPage():
     root = Tk()
     root.title("Hangman")
-    root.iconbitmap("HangmanIcon.ico")
+    root.iconbitmap("UI/HangmanIcon.ico")
     root.geometry("800x700")
     root.configure(bg='black')
 
@@ -74,7 +74,7 @@ def loginSignUpPage():
         showStatistics = checkIfIShouldShowStatistics(userName)
         checkLogin = handlingUserData.logIn(userName, password)
         if checkLogin:
-            if showStatistics < 4:
+            if showStatistics > 4:
                 root.destroy()
                 startOrStatistics(userName)
             else:
