@@ -12,6 +12,7 @@ def hangmanGameOverPage(userName, winLooseText, theAnswerWasText):
 
     ##############################colors################################
     # all the colors I will use
+    green = "#00FF19"
     red = "#f00"
     white = "#fff"
     black = "#000"
@@ -55,8 +56,8 @@ def hangmanGameOverPage(userName, winLooseText, theAnswerWasText):
     exitButton = Button(contentFrame, text="Exit", command=exitGame, width=8, fg=white, bg=red, font=("Arial", myFontSize))
     exitButton.grid(row=4, column=0, sticky=S+W, ipadx=10, pady=25)
 
-    playAgainButton = Button(contentFrame, text="Play again", command=playAgain, width=8, fg=white, bg=red, font=("Arial", myFontSize))
-    playAgainButton.grid(row=5, column=0, sticky=S+W, ipadx=10, pady=25)
+    playAgainButton = Button(contentFrame, text="Play again", command=playAgain, width=8, fg=black, bg=green, font=("Arial", myFontSize))
+    playAgainButton.grid(row=3, column=0, sticky=S+W, ipadx=10, pady=25)
     
     ##############################image################################    
     hangmanImg = ImageTk.PhotoImage(Image.open("HangmanFunctions/Images/step10.jpg"), master=contentFrame)
