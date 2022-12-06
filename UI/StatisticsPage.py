@@ -36,7 +36,7 @@ def statisticsPage(userName):
 
     ##############################text################################
     whatToDo = Label(contentFrame, text="What statistics would you like to see?", bg=black, fg=white, font=("Arial", myFontSize))
-    whatToDo.grid(row=0, column=0, columnspan=3, sticky=W+N+E+S, pady=5)
+    whatToDo.grid(row=0, column=0, sticky=W+N+E+S, pady=5)
     
     ##############################button functions################################    
     def exitGame():
