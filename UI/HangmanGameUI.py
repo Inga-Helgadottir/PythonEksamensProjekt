@@ -164,6 +164,7 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, originalLinesText, hi
     def handleGuess(guess):
         correctGuessWord = guessWord.upper().strip()
         currentGuessUpper = guess.upper().strip()
+        guessSentenceInput.delete(0, END)
 
         print("correctGuessWord")
         print(correctGuessWord)
