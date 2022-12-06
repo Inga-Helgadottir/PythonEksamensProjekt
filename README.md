@@ -16,8 +16,6 @@ Så kan man også se grafer på brugerens spille informationer.
 
 ## Teknologier brugt
 
-I dette projekt har jeg brugt følgende teknologier:
-
 - Pandas
 - Numpy
 - os
