@@ -7,8 +7,8 @@ id,category,guessWord,wonOrLost,correctGuesses,wrongGuesses,nbrOfGuesses,hintsUs
 6,RAMC,Ants in my Eyes Johnson,Won,AS,F,3,1,True
 7,Movies,The Thing,Won,THE,AS,5,1,False
 8,Movies,The Errand Boy,Lost,THENARDBO,SC,11,0,True
-9,RAMC,Antenna Morty,,ANATEMOR,SW,10,0,True
-10,RAMC,Alexander,,AALEXANDER,,2,0,True
+9,RAMC,Antenna Morty,Won,ANATEMOR,SW,10,0,True
+10,RAMC,Alexander,Won,ALEXANDER,,2,0,True
 11,RAMC,Alan Rails,,AL,B,3,0,False
 12,RAMC,Adjudicator Rick,,ADJUDICATOR RICK,,1,0,True
 13,RAMC,Alien Morty,,AALIEN MORTY,,2,0,True
@@ -18,4 +18,8 @@ id,category,guessWord,wonOrLost,correctGuesses,wrongGuesses,nbrOfGuesses,hintsUs
 17,RAMC,Abadango Cluster Princess,,ABADANGO CLUSTER PRINCESS,,1,0,True
 18,Movies,Private Peaceful,,ARLPRIVTECF,SDOH,15,0,True
 19,Movies,Tape,,ATAPE,,2,0,True
-20,Movies,Mine,,MIN,A,4,1,True
+20,Movies,Mine,Won,MINE,A,4,1,True
+21,Movies,Mara,Won,AM,BE,4,0,True
+22,Movies,Room 237,,ROM23,A,6,0,True
+23,Movies,Borg Vs. McEnroe,Won,BORG VS. MCENROE,TA,3,0,True
+24,Movies,Playing for Keeps,Lost,ASFR,QWZX1674923,15,0,True
