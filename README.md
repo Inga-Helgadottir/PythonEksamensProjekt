@@ -12,6 +12,8 @@ Man kan logge ind og oprette en bruger.
 
 Så kan man også se grafer på brugerens spille informationer.
 
+---
+
 ## Teknologier brugt
 
 I dette projekt har jeg brugt følgende teknologier:
@@ -27,6 +29,8 @@ I dette projekt har jeg brugt følgende teknologier:
 - os
 - sys
 - requests
+
+---
 
 ## Installations guide
 
@@ -46,6 +50,8 @@ pip install sys
 pip install requests
 ```
 
+---
+
 ## Bruger guide
 
 For at køre projektet skal man køre følgende linje i roden af projektet
@@ -53,6 +59,8 @@ For at køre projektet skal man køre følgende linje i roden af projektet
 ```python
 python go.py
 ```
+
+---
 
 ## Status på implementering
 
@@ -79,6 +87,8 @@ Man kan også vinde og tabe spillet og da det sker, kommer mand ind på game ove
 Da man kommer til statistik siden, kan man vælge at se en linje graf eller et søjlediagram. Da jeg startede på det fattede jeg at det data jeg har er ikke det bedste til at lave grafer fra så jeg måtte improvisere lidt. Her er der også en spil igen knap.
 
 Jeg har nået næsten alt jeg ønskede mig, de eneste jeg ikke nåede, var at lave funktionaliteten om så at man kan spille videre næste gang man åbner programmet og at jeg nåede ikke at lave mit UI helt perfekt.
+
+---
 
 ## Udfordringer
 
