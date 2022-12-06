@@ -1,6 +1,6 @@
 from tkinter import *
-from DataCode import handlingUserData
 from tkinter import messagebox 
+from DataCode import handlingUserData
 from DataCode.handlingUserData import checkIfIShouldShowStatistics
 from UI.ChooseCategoryPage import chooseACategoryPage
 from UI.StartGameOrStatistics import startOrStatistics
@@ -16,7 +16,6 @@ def loginSignUpPage():
     # all the colors I will use
     green = "#00FF19"
     red = "#f00"
-    blue = "#2C0AFF"
     white = "#fff"
     black = "#000"
     purpleHeaderBg = "#9B4AEC"
@@ -26,7 +25,6 @@ def loginSignUpPage():
     global hintNbr
     hintNbr = 0
     
-    myWidth2 = 15
     myFontSize = 30
     myLittleFontSize = 15
 

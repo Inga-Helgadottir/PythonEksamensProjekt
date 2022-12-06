@@ -15,18 +15,14 @@ def startOrStatistics(userName):
 
     ##############################colors################################
     # all the colors I will use
-    green = "#00FF19"
     red = "#f00"
     blue = "#2C0AFF"
     white = "#fff"
     black = "#000"
     purpleHeaderBg = "#9B4AEC"
-    purpleLogInAndSignInBg = "#6912C0"
 
     ##############################variables################################
-    myWidth2 = 15
     myFontSize = 30
-    hintFontSize = 15
 
     ##############################frames################################
     headerFrame = LabelFrame(root, bg=purpleHeaderBg)

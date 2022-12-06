@@ -1,6 +1,5 @@
 from UI.HangmanGameUI import hangmanGamePage
 from UI.getLines import showLines
-import re
 
 def changeInfoForHangmanUI(user, toChange):
     guessWord = str(toChange["guessWord"].values[0]).strip()

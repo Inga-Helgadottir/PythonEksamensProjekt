@@ -4,8 +4,8 @@ import os
 import random
 from DataCode.getSpecificData import getDataFromCategory
 
-userCsvFileStart = "../EksamensProjekt/DataFiles/Users/"
-usersCsvFile = "../EksamensProjekt/DataFiles/UserData.csv"
+userCsvFileStart = "DataFiles/Users/"
+usersCsvFile = "DataFiles/UserData.csv"
 print
 def signUp(userName, password):
     userDataLocation = usersCsvFile

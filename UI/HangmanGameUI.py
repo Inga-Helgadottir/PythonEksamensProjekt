@@ -2,7 +2,6 @@ from tkinter import *
 from PIL import ImageTk, Image
 import tkinter.font as font
 from tkinter import ttk
-from UI.getLines import showLines
 from tkinter import messagebox
 import os
 from os import listdir
@@ -45,7 +44,7 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, originalLinesText, hi
     global hangmanImages
     hangmanImages = []
     
-    folder_dir = "../EksamensProjekt/HangmanFunctions/Images/"
+    folder_dir = "HangmanFunctions/Images/"
     for images in os.listdir(folder_dir):
         if (images.endswith(".jpg")):
             hangmanImages.append(folder_dir + images)

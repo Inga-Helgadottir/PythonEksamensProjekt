@@ -52,7 +52,7 @@ def hangmanGameOverPage(userName, winLooseText, theAnswerWasText):
     exitButton.grid(row=4, column=0, sticky=S+W, ipadx=10, pady=25)
     
     ##############################image################################    
-    hangmanImg = ImageTk.PhotoImage(Image.open("../EksamensProjekt/HangmanFunctions/Images/step10.jpg"), master=contentFrame)
+    hangmanImg = ImageTk.PhotoImage(Image.open("HangmanFunctions/Images/step10.jpg"), master=contentFrame)
     image = Label(contentFrame, image=hangmanImg)
     image.grid(row=3, column=1, columnspan=2, rowspan=2, sticky=S+E+W+N, pady=20, padx=30)
 
