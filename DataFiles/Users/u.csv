@@ -10,3 +10,7 @@ id,category,guessWord,wonOrLost,correctGuesses,wrongGuesses,nbrOfGuesses,hintsUs
 9,RAMC,Antenna Morty,,ANATEMOR,SW,10,0,True
 10,RAMC,Alexander,,AALEXANDER,,2,0,True
 11,RAMC,Alan Rails,,AL,B,3,0,False
+12,RAMC,Adjudicator Rick,,ADJUDICATOR RICK,,1,0,True
+13,RAMC,Alien Morty,,AALIEN MORTY,,2,0,True
+14,RAMC,Summer Smith,,SSUMMER SMITH,A,3,0,True
+15,RAMC,Jerry Smith,,JERRY SMITH,A,2,0,True

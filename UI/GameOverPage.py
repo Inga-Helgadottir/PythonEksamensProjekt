@@ -3,6 +3,7 @@ from PIL import ImageTk, Image
 import tkinter.font as font
 
 def hangmanGameOverPage(userName, winLooseText, theAnswerWasText):
+    from UI.ChooseCategoryPage import toChooseACategoryPage
     root = Tk()
     root.title("Hangman")
     root.iconbitmap("UI/HangmanIcon.ico")
@@ -46,9 +47,16 @@ def hangmanGameOverPage(userName, winLooseText, theAnswerWasText):
     def exitGame():
         root.destroy()    
 
+    def playAgain():
+        root.destroy()  
+        toChooseACategoryPage(userName)
+
     ##############################buttons################################
     exitButton = Button(contentFrame, text="Exit", command=exitGame, width=8, fg=white, bg=red, font=("Arial", myFontSize))
     exitButton.grid(row=4, column=0, sticky=S+W, ipadx=10, pady=25)
+
+    playAgainButton = Button(contentFrame, text="Play again", command=playAgain, width=8, fg=white, bg=red, font=("Arial", myFontSize))
+    playAgainButton.grid(row=5, column=0, sticky=S+W, ipadx=10, pady=25)
     
     ##############################image################################    
     hangmanImg = ImageTk.PhotoImage(Image.open("HangmanFunctions/Images/step10.jpg"), master=contentFrame)

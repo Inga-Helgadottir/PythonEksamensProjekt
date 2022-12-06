@@ -1,7 +1,7 @@
 from tkinter import *
 from PIL import ImageTk, Image
 import tkinter.font as font
-from UI.ChooseCategoryPage import chooseACategoryPage
+from UI.ChooseCategoryPage import toChooseACategoryPage
 
 from UI.StatisticsPage import statisticsPage
 
@@ -14,6 +14,7 @@ def startOrStatistics(userName):
 
     ##############################colors################################
     # all the colors I will use
+    green = "#00FF19"
     red = "#f00"
     blue = "#2C0AFF"
     white = "#fff"
@@ -48,7 +49,7 @@ def startOrStatistics(userName):
 
     def play():
         root.destroy()
-        chooseACategoryPage(userName)
+        toChooseACategoryPage(userName)
 
     ##############################buttons################################
     exitButton = Button(contentFrame, text="Exit", command=exitGame, width=15, fg=white, bg=red, font=("Arial", myFontSize))
@@ -57,7 +58,7 @@ def startOrStatistics(userName):
     seeStatistics = Button(contentFrame, text="See statistics", command=lambda: statistics(), width=15, fg=white, bg=blue, font=("Arial", myFontSize))
     seeStatistics.grid(row=1, column=0, sticky=W+N+S+E, ipadx=10, pady=25, padx=20)
 
-    PlayTheGame = Button(contentFrame, text="Play the game", command=lambda: play(), width=15, fg=white, bg=blue, font=("Arial", myFontSize))
+    PlayTheGame = Button(contentFrame, text="Play the game", command=lambda: play(), width=15, fg=black, bg=green, font=("Arial", myFontSize))
     PlayTheGame.grid(row=2, column=0, sticky=W+N+S+E, ipadx=10, pady=25, padx=20)
     
     root.mainloop()

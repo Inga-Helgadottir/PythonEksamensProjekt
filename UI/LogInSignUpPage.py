@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox 
 from DataCode import handlingUserData
 from DataCode.handlingUserData import checkIfIShouldShowStatistics
-from UI.ChooseCategoryPage import chooseACategoryPage
+from UI.ChooseCategoryPage import toChooseACategoryPage
 from UI.StartGameOrStatistics import startOrStatistics
 
 def loginSignUpPage():
@@ -77,7 +77,7 @@ def loginSignUpPage():
                 startOrStatistics(userName)
             else:
                 root.destroy()
-                chooseACategoryPage(userName)
+                toChooseACategoryPage(userName)
         else:
             messagebox.showerror("Input error", "The user name or password is wrong")
 
@@ -88,7 +88,7 @@ def loginSignUpPage():
             checkSignUp = handlingUserData.signUp(userName, password)
             if checkSignUp == "You are now logged in":
                 root.destroy()
-                chooseACategoryPage(userName)
+                toChooseACategoryPage(userName)
             else:
                 messagebox.showerror("Input error", "The user name you have entered is already taken")
 

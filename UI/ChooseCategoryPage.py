@@ -3,7 +3,7 @@ import tkinter.font as font
 from DataCode import getSpecificData
 from HangmanFunctions.changeInfoForHangmanUI import changeInfoForHangmanUI
 
-def chooseACategoryPage(userName):
+def toChooseACategoryPage(userName):
     root = Tk()
     root.title("Hangman")
     root.iconbitmap("UI/HangmanIcon.ico")

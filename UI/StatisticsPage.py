@@ -5,10 +5,11 @@ import pandas as pd
 import matplotlib.ticker as mtick
 
 def statisticsPage(userName):
+    from UI.ChooseCategoryPage import toChooseACategoryPage
     root = Tk()
     root.title("Hangman")
     root.iconbitmap("UI/HangmanIcon.ico")
-    root.geometry("900x700")
+    root.geometry("700x1000")
     root.configure(bg='black')
 
     ##############################colors################################
@@ -19,12 +20,9 @@ def statisticsPage(userName):
     white = "#fff"
     black = "#000"
     purpleHeaderBg = "#9B4AEC"
-    purpleLogInAndSignInBg = "#6912C0"
 
     ##############################variables################################
-    myWidth2 = 15
     myFontSize = 30
-    hintFontSize = 15
 
     ##############################frames################################
     headerFrame = LabelFrame(root, bg=purpleHeaderBg)
@@ -66,9 +64,13 @@ def statisticsPage(userName):
         userData.plot(kind='line',x='id',y='hintsUsed', color='red', ax=ax)
         plt.show()
 
+    def playAgain():
+        root.destroy()  
+        toChooseACategoryPage(userName)
+
     ##############################buttons################################
     exitButton = Button(contentFrame, text="Exit", command=exitGame, width=15, fg=white, bg=red, font=("Arial", myFontSize))
-    exitButton.grid(row=4, column=0, sticky=W+N+S+E, ipadx=10, pady=25, padx=20)
+    exitButton.grid(row=5, column=0, sticky=W+N+S+E, ipadx=10, pady=25, padx=20)
     
     seeBarPlot = Button(contentFrame, text="See bar plot", command=barPlot, width=15, fg=white, bg=blue, font=("Arial", myFontSize))
     seeBarPlot.grid(row=1, column=0, sticky=W+N+S+E, ipadx=10, pady=25, padx=20)
@@ -79,4 +81,7 @@ def statisticsPage(userName):
     seegroupByBarPlot = Button(contentFrame, text="See group by bar plot", command=groupByBarPlot, width=15, fg=white, bg=blue, font=("Arial", myFontSize))
     seegroupByBarPlot.grid(row=3, column=0, sticky=W+N+S+E, ipadx=10, pady=25, padx=20)    
     
+    playAgainButton = Button(contentFrame, text="Play again", command=playAgain, width=8, fg=black, bg=green, font=("Arial", myFontSize))
+    playAgainButton.grid(row=4, column=0, sticky=W+N+S+E, ipadx=10, pady=25)
+
     root.mainloop()
