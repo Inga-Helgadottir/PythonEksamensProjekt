@@ -51,7 +51,7 @@ def statisticsPage(userName):
     def groupByBarPlot():
         userCsvFile = "../EksamensProjekt/DataFiles/Users/" + userName + ".csv"
         userData = pd.read_csv(userCsvFile, usecols = ["guessWord", "wonOrLost", "category", "nbrOfGuesses", "hintsUsed"], encoding='latin-1')
-        userData.groupby(["category","wonOrLost"]).size().groupby(level=0).apply(lambda x: 100 * x / x.sum()).unstack().plot(kind='bar',stacked=True)
+        userData.groupby(["category","wonOrLost"]).size().groupby(level=0, group_keys=False).apply(lambda x: 100 * x / x.sum()).unstack().plot(kind='bar',stacked=True)
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
         plt.show()
 
