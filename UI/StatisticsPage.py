@@ -40,7 +40,6 @@ def statisticsPage(userName):
     
     ##############################button functions################################    
     def exitGame():
-        # add a function to save progress later
         root.destroy()      
     
     def barPlot():
