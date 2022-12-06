@@ -1,3 +1,3 @@
 userName,password,userCsvFile
 u,p,../DataFiles/Users/user.csv
-tester,testing,../DataFiles/Users/tester.userCsvFile
+t,t,DataFiles/Users/t.csv

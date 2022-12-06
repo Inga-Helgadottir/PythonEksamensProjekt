@@ -8,3 +8,5 @@ id,category,guessWord,wonOrLost,correctGuesses,wrongGuesses,nbrOfGuesses,hintsUs
 7,Movies,The Thing,Won,THE,AS,5,1,False
 8,Movies,The Errand Boy,Lost,THENARDBO,SC,11,0,True
 9,RAMC,Antenna Morty,,ANATEMOR,SW,10,0,True
+10,RAMC,Alexander,,AALEXANDER,,2,0,True
+11,RAMC,Alan Rails,,AL,B,3,0,False
