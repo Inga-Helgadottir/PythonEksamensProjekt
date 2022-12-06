@@ -52,7 +52,10 @@ python go.py
 
 ## Status på implementering
 
-I dette projekt har jeg taget data jeg fandt på nettet, Rick and Morty API (https://rickandmortyapi.com/) og Movies CSV (https://www.mavenanalytics.io/data-playground?page=2&pageSize=20).
+I dette projekt har jeg taget data jeg fandt på nettet,
+
+- Rick and Morty API (https://rickandmortyapi.com/)
+- Movies CSV (https://www.mavenanalytics.io/data-playground?page=2&pageSize=20).
 
 Det data hentede jeg ned og ændrede så det passer til mit Hangman spil. Jeg fjernede unødvendige kolonner, ændrede navnet på de resterne kolonner og tilføjede data om sætningens/ordets opbygning.
 
