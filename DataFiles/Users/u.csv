@@ -16,3 +16,6 @@ id,category,guessWord,wonOrLost,correctGuesses,wrongGuesses,nbrOfGuesses,hintsUs
 15,RAMC,Jerry Smith,,JERRY SMITH,A,2,0,True
 16,RAMC,Morty Smith,,SMMORTY SMITH,A,4,0,True
 17,RAMC,Abadango Cluster Princess,,ABADANGO CLUSTER PRINCESS,,1,0,True
+18,Movies,Private Peaceful,,ARLPRIVTECF,SDOH,15,0,True
+19,Movies,Tape,,ATAPE,,2,0,True
+20,Movies,Mine,,MIN,A,4,1,True
