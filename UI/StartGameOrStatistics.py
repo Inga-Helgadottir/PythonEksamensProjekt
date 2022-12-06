@@ -1,7 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image
 import tkinter.font as font
-from tkinter import ttk
 from UI.ChooseCategoryPage import chooseACategoryPage
 
 from UI.StatisticsPage import statisticsPage

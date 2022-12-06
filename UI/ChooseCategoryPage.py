@@ -1,7 +1,5 @@
 from tkinter import *
-from PIL import ImageTk, Image
 import tkinter.font as font
-from tkinter import ttk
 from DataCode import getSpecificData
 from HangmanFunctions.changeInfoForHangmanUI import changeInfoForHangmanUI
 

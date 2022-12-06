@@ -1,7 +1,5 @@
 from tkinter import *
-from PIL import ImageTk, Image
 import tkinter.font as font
-from tkinter import ttk
 import matplotlib.pyplot as plt
 import pandas as pd
 import matplotlib.ticker as mtick
