@@ -20,7 +20,7 @@ def signUp(userName, password):
             f.write(writeThis)
 
         # make a csv file named after the users name with the column names
-        writeThisInUserData = "category,guessWord,wonOrLost,correctGuesses,wrongGuesses,nbrOfGuesses,hintsUsed,gameCompleted\n"
+        writeThisInUserData = "id,category,guessWord,wonOrLost,correctGuesses,wrongGuesses,nbrOfGuesses,hintsUsed,gameCompleted\n"
         with open(userCsvFile, "w", newline='') as file:
             file.write(writeThisInUserData)
     else:
@@ -41,7 +41,7 @@ def signUp(userName, password):
                 f.write(writeThis)
                 
             # make a csv file named after the users name with the column names
-            writeThisInUserData = "category,guessWord,wonOrLost,correctGuesses,wrongGuesses,nbrOfGuesses,hintsUsed,gameCompleted\n"
+            writeThisInUserData = "id,category,guessWord,wonOrLost,correctGuesses,wrongGuesses,nbrOfGuesses,hintsUsed,gameCompleted\n"
             with open(userCsvFile, "w", newline='') as file:
                 file.write(writeThisInUserData)
             
@@ -75,7 +75,8 @@ def saveUserGameInfo(userName, category, guessWord, wonOrLost, correctGuesses, w
     if category == "Rick and Morty character":
         category = "RAMC"
 
-    writeThis = str(category) + "," + str(guessWord) + "," + str(wonOrLost) + "," + str(correctGuesses) + "," + str(wrongGuesses) + "," + str(nbrOfGuesses) + "," + str(hintsUsed) + "," + str(gameCompleted) + "\n" 
+    id = checkIfIShouldShowStatistics(userName) + 1
+    writeThis = str(id) + "," + str(category) + "," + str(guessWord) + "," + str(wonOrLost) + "," + str(correctGuesses) + "," + str(wrongGuesses) + "," + str(nbrOfGuesses) + "," + str(hintsUsed) + "," + str(gameCompleted) + "\n" 
     
     with open(userCsvFile, "a", newline='') as f:
         f.write(writeThis)
