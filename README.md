@@ -1,4 +1,4 @@
-# Hangman projekt
+# Hangman projekt (Sigurros Inga Helgadottir)
 
 ## Kort beskrivelse
 
