@@ -81,7 +81,7 @@ def statisticsPage(userName):
     seegroupByBarPlot = Button(contentFrame, text="See group by bar plot", command=groupByBarPlot, width=15, fg=white, bg=blue, font=("Arial", myFontSize))
     seegroupByBarPlot.grid(row=3, column=0, sticky=W+N+S+E, ipadx=10, pady=25, padx=20)    
     
-    playAgainButton = Button(contentFrame, text="Play again", command=playAgain, width=8, fg=black, bg=green, font=("Arial", myFontSize))
+    playAgainButton = Button(contentFrame, text="Play game", command=playAgain, width=8, fg=black, bg=green, font=("Arial", myFontSize))
     playAgainButton.grid(row=4, column=0, sticky=W+N+S+E, ipadx=10, pady=25)
 
     root.mainloop()
