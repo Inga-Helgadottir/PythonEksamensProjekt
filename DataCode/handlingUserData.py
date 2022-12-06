@@ -68,7 +68,6 @@ def checkIfIShouldShowStatistics(userName):
     userData = pd.read_csv(userCsvFile)
     return len(userData)
         
-# saveUserGameInfo(userName, categoryInfoText, guessWord, "", str(correctGuesses), str(wrongGuesses), nbrOfGuesses, hintNbr, False)
 def saveUserGameInfo(userName, category, guessWord, wonOrLost, correctGuesses, wrongGuesses, nbrOfGuesses, hintsUsed, gameCompleted):
     userNameStripped = userName.strip()
     userCsvFile = userCsvFileStart + userNameStripped + ".csv"
