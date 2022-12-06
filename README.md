@@ -3,9 +3,13 @@
 ## Kort beskrivelse
 
 Mit projekt er spillet Hangman.
+
 Hvor jeg henter data fra 2 forskellige steder og bruger det data som de ord man skal gætte på.
+
 Jeg har tilføjet hints til spillet så jeg har lidt mere kød på.
+
 Man kan logge ind og oprette en bruger.
+
 Så kan man også se grafer på brugerens spille informationer.
 
 ## Teknologier brugt
@@ -52,7 +56,7 @@ python go.py
 
 ## Status på implementering
 
-I dette projekt har jeg taget data jeg fandt på nettet,
+I dette projekt har jeg taget data jeg fandt på nettet :
 
 - Rick and Morty API (https://rickandmortyapi.com/)
 - Movies CSV (https://www.mavenanalytics.io/data-playground?page=2&pageSize=20).
