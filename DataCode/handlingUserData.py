@@ -6,7 +6,7 @@ from DataCode.getSpecificData import getDataFromCategory
 
 userCsvFileStart = "DataFiles/Users/"
 usersCsvFile = "DataFiles/UserData.csv"
-print
+
 def signUp(userName, password):
     userDataLocation = usersCsvFile
     userNameStripped = userName.strip()
