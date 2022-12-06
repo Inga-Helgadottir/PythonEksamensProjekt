@@ -14,3 +14,5 @@ id,category,guessWord,wonOrLost,correctGuesses,wrongGuesses,nbrOfGuesses,hintsUs
 13,RAMC,Alien Morty,,AALIEN MORTY,,2,0,True
 14,RAMC,Summer Smith,,SSUMMER SMITH,A,3,0,True
 15,RAMC,Jerry Smith,,JERRY SMITH,A,2,0,True
+16,RAMC,Morty Smith,,SMMORTY SMITH,A,4,0,True
+17,RAMC,Abadango Cluster Princess,,ABADANGO CLUSTER PRINCESS,,1,0,True
