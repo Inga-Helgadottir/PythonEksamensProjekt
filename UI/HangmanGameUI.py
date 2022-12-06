@@ -84,7 +84,7 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, originalLinesText, hi
         # add a function to save progress later
         root.destroy()   
     
-    def saveUserData(gameCompleted):
+    def saveUserData(gameCompleted, winLoose):
         nbrOfGuesses = len(wrongGuesses)+len(correctGuesses)
         
         correctGuessesToSend = ""
@@ -95,16 +95,16 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, originalLinesText, hi
         for i in wrongGuesses:
             wrongGuessesToSend = wrongGuessesToSend + i
 
-        saveUserGameInfo(userName, categoryInfoText, guessWord, "", correctGuessesToSend, wrongGuessesToSend, nbrOfGuesses, hintNbr, gameCompleted)
+        saveUserGameInfo(userName, categoryInfoText, guessWord, winLoose, correctGuessesToSend, wrongGuessesToSend, nbrOfGuesses, hintNbr, gameCompleted)
 
     
     def gameOver(wonOrLost):
         if wonOrLost == "Won":
-            saveUserData(True)
+            saveUserData(True, "Won")
             root.destroy()
             hangmanGameOverPage(userName, "You won!", guessWord)
         else:
-            saveUserData(True)
+            saveUserData(True, "Lost")
             root.destroy()
             hangmanGameOverPage(userName, "You lost!", guessWord)
 
@@ -172,7 +172,6 @@ def hangmanGamePage(userName, guessWord, categoryInfoText, originalLinesText, hi
         if len(guess) == 0:
             messagebox.showerror("Input error", "The input is empty")
         elif len(guess) == 1:
-            print(correctGuessWord.find(currentGuessUpper))
             if correctGuessWord.find(currentGuessUpper) == -1:
                 wrongGuesses.append(currentGuessUpper)
                 listOfGuessed = Label(contentFrame, text=wrongGuesses, bg=black, fg=white, font=("Arial", myFontSize))
