@@ -1,0 +1,2 @@
+id,category,guessWord,wonOrLost,correctGuesses,wrongGuesses,nbrOfGuesses,hintsUsed,gameCompleted
+1,RAMC,Alan Rails,Won,RIANL,MDCBJKX,12,1,True

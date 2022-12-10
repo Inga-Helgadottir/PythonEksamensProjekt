@@ -1,6 +1,4 @@
 import cv2
-import matplotlib.pyplot as plt
-
 
 color = (255, 255, 255)
 myThickness = 5
